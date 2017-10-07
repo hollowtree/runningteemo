@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>generate pdf</title>
+    <meta name="description" content=" by hollowtree">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+    <p id="ui">generate pdf</p>
+    <canvas id="canvas" height="965" width="682"></canvas>
+    <div id="thehtml" style="border:1px solid #ccc;height:300px;">
+        <style>
+            .container {
+                color: green;
+                border: 2px dashed blue;
+                line-height: 20px;
+                padding: 10px;
+                font-size: 14px;
+                font-family: 'Microsoft YaHei';
+                height: 35px;
+            }
+
+            .temp {
+                width: 20px;
+                height: 200px;
+                background: red;
+                position: relative;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                margin-left: 10px;
+            }
+
+            .temp:after {
+                content: '';
+                display: table;
+                width: 40px;
+                height: 40px;
+                background: red;
+                position: absolute;
+                bottom: 0;
+                border-radius: 20px;
+                margin-bottom: -38px;
+                margin-left: -10px;
+            }
+        </style>
+        <div>
+            <div class="container">急哦；橘红iioj急哦；橘红iioj急哦；橘红iioj急哦；橘红iioj急哦；橘红iioj急哦；橘红iioj急哦；橘红iioj急哦；橘红iioj</div>
+            <div class="temp"></div>
+        </div>
+    </div>
+</body>
+<script src="./lib/rasterizeHTML.allinone.js"></script>
+<script src="./lib/jspdf.min.js"></script>
+<!-- <script src="./lib/html2canvas.min.js"></script> -->
+<script src="./scripts/main.js"></script>
+
+</html>
