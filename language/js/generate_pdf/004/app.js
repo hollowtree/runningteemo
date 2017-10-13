@@ -7,7 +7,9 @@ const puppeteer = require('puppeteer');
     await page.pdf({
         path: 'hn.pdf',
         format: 'A4',
-        displayHeaderFooter: true
+        printBackground: true,
+        displayHeaderFooter: true,
+        margin: {top: 40, bottom: 40}
     });
 
     await browser.close();
