@@ -1,0 +1,1 @@
+vps 上的 mongodb 配置文件里要把 bind_ip 设为0.0.0.0
