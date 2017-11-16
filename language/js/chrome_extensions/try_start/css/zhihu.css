@@ -1,0 +1,19 @@
+*{
+    font-size: 13px !important;
+}
+img{
+    max-width: 300px !important;
+    max-height: 100px !important;
+}
+.Icon--logo{
+    visibility: hidden !important;
+}
+.AuthorInfo-avatar{
+    display: none !important;
+}
+.zu-top{
+    background-image: none !important;
+}
+.zu-top-search-form .zu-top-search-button{
+    height: 20px !important;
+}

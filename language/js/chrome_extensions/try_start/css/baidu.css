@@ -1,0 +1,42 @@
+*{
+    background-color: rgb(207,221,192) !important;
+    border-color: #7b8c69 !important;
+}
+a{
+    color: #565d4f !important;
+}
+.s_bri,
+.s-top-wrap,
+.s_btn_wr,
+#su{
+    border-bottom-color: transparent !important;
+}
+#su{
+    background: #7b8c69 !important;
+}
+#head{
+    min-height: 0 !important;
+}
+#bottom_container,
+#head img{
+    visibility: hidden !important;
+}
+/* logo */
+#result_logo,
+/* 页码上面的百度图标 */
+.fk{
+    visibility: hidden;
+}
+/* 首页登陆后用户名下面的菜单旁的小箭头 */
+.menu-arrow,
+.bdnuarrow,
+/* 百度首页无用的内容（下面的‘我的导航’） */
+#s_wrap,
+/* 为您推荐小图标 */
+.hint_toprq_icon i,
+/* 搜索框下面的相关关键词提示 */
+.headBlock,
+/* 右边大块内容 */
+#content_right{
+    display: none !important;
+}

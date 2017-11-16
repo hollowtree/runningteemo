@@ -1,0 +1,56 @@
+{
+    "manifest_version": 2,
+    "name": "try start",
+    "description": "try write extension",
+    "version": "1.0",
+    "chrome_url_overrides": {
+        "newtab": "blank.html"
+    },
+    "background": {
+        "scripts": [
+            "eventPage.js"
+        ],
+        "persistent": true
+    },
+    "browser_action": {
+        "default_icon": "icon.png",
+        "default_popup": "popup.html",
+        "default_title": "Click here!"
+    },
+    "permissions": [
+        "activeTab",
+        "storage",
+        "alarms",
+        "notifications",
+        "system.display",
+        "tabs"
+    ],
+    "commands": {
+        "toggle-feature": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+L"
+            },
+            "description": "Send a 'toggle-feature' event to the extension"
+        }
+    },
+    "content_scripts": [
+        {
+            "css": [
+                "css/baidu.css"
+            ],
+            "matches": [
+                "https://www.baidu.com/*"
+            ],
+            "run_at": "document_start"
+        },
+        {
+            "css": [
+                "css/zhihu.css"
+            ],
+            "matches": [
+                "https://www.zhihu.com/*"
+            ],
+            "run_at": "document_start"
+        }
+    ]
+}
