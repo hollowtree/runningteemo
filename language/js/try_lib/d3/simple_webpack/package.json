@@ -1,0 +1,32 @@
+{
+    "name": "try_d3_with_simple_webpack",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "babel src -d lib",
+        "start": "webpack-dev-server"
+    },
+    "keywords": [
+        "d3",
+        "webpack",
+        "techan",
+        "kline"
+    ],
+    "author": "hollowtree",
+    "license": "ISC",
+    "dependencies": {
+        "d3": "^4.11.0",
+        "html-webpack-plugin": "^2.30.1",
+        "webpack": "^3.8.1",
+        "webpack-dev-server": "^2.9.4"
+    },
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-core": "^6.26.0",
+        "babel-loader": "^7.1.2",
+        "babel-preset-env": "^1.6.1",
+        "babel-preset-es2015": "^6.24.1"
+    }
+}
