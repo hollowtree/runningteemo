@@ -1,6 +1,6 @@
 node_modules/
 db.conf*
-*.config.js
+*.cf.js
 
 spider_link_data/
 data-*.json

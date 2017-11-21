@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>D3 Webpack Babel</title>
+    <style>
+        #main,
+        #container,
+        svg {
+            height: 100%;
+            width: 100%;
+        }
+
+        #main {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .points {
+            r: 3;
+            fill: steelblue;
+        }
+
+        #c {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 0px;
+        }
+
+        .border {
+            fill: none;
+            stroke: #ccc;
+        }
+
+        .bound {
+            stroke: red;
+            fill: none;
+            stroke-width: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div id="container">
+            <svg id="svg"></svg>
+        </div>
+    </div>
+</body>
+
+</html>
