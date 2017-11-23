@@ -10,3 +10,7 @@ svg.append("g").attr("class", "axis")
     .attr("transform", "translate(0," + (h - 100) + ")")
     .call(d3.axisBottom(xscale))
 
+
+d3.select('body')
+    .append("div")
+    .addClass('90')
