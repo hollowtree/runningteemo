@@ -1,7 +1,12 @@
 import * as d3 from 'd3'
 
     ; (function () {
-        var data = [20, 20, 20]
+        var data = [
+            { x: 0, y: 40 },
+            { x: 10, y: 80 },
+            { x: 20, y: 50 },
+            { x: 30, y: 70 }
+        ]
         var width = 500,
             height = 500,
             margin = 25,
@@ -13,7 +18,7 @@ import * as d3 from 'd3'
 
         var yScale = d3.scaleLinear()
             .domain([0, 100])
-            .range([0, axisLength])
+            .range([axisLength, 0])
 
         var chart = d3.select('body')
             .append('svg')
@@ -54,6 +59,35 @@ import * as d3 from 'd3'
             .attr('y2', 0)
             .style('stroke-width', 1)
             .style('stroke', '#ccc')
+
+        var line = d3.line()
+            .x(function (d) {
+                return xScale(d.x)
+            })
+            .y(function (d) {
+                return yScale(d.y)
+            })
+
+        chart.append('path')
+            .attr('d', line(data))
+            .attr('stroke', 'blue')
+            .attr('fill', 'none')
+            .attr('transform', function () {
+                return 'translate(' + margin + ',' + margin + ')'
+            })
+
+        var arc1 = d3.arc()
+            .innerRadius(xScale(10))
+            .outerRadius(xScale(20))
+            .startAngle(Math.PI / 2)
+            .endAngle(Math.PI)
+
+        chart.append('path')
+            .attr('d', arc1())
+            .attr('fill', 'rgba(70, 130, 180, .7)')
+            .attr('transform', function () {
+                return 'translate(' + margin + ',' + margin + ')'
+            })
 
 
     })()
