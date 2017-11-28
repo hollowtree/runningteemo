@@ -22,6 +22,7 @@ import * as d3 from 'd3'
 
         var chart = d3.select('body')
             .append('svg')
+            // .attr('viewBox','0,0,'+ width+','+height)
             .attr('width', width)
             .attr('height', height)
             .style('border', '1px solid #666')
@@ -33,7 +34,7 @@ import * as d3 from 'd3'
             })
             .call(d3.axisBottom(xScale))
 
-        chart.selectAll('g.x-axis g.tick')
+        chart.selectAll('g.x-axis g.tick:nth-child(n+3)')
             .append('line')
             .classed('grid-line', true)
             .attr('x1', 0)
@@ -42,6 +43,7 @@ import * as d3 from 'd3'
             .attr('y2', -(height - 2 * margin))
             .style('stroke-width', 1)
             .style('stroke', '#ccc')
+            .style('stroke-dasharray', '1,5,1')
 
         chart.append('g')
             .classed('y-axis', true)
@@ -50,7 +52,7 @@ import * as d3 from 'd3'
             })
             .call(d3.axisLeft(yScale))
 
-        chart.selectAll('g.y-axis g.tick')
+        chart.selectAll('g.y-axis g.tick:nth-child(n+3)')
             .append('line')
             .classed('grid-line', true)
             .attr('x1', 0)
@@ -59,6 +61,7 @@ import * as d3 from 'd3'
             .attr('y2', 0)
             .style('stroke-width', 1)
             .style('stroke', '#ccc')
+            .style('stroke-dasharray', '1,5,1')
 
         var line = d3.line()
             .x(function (d) {
@@ -95,15 +98,15 @@ import * as d3 from 'd3'
 
     ; (function () {
 
-        var xScale = d3.scaleLinear()
-            .domain([0, 100])
-            .range([0, 500]);
+        var xScale = d3.scaleBand()
+            .domain([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+            .range([0, 600]);
 
         var xAxis = d3.axisBottom(xScale)
-            .ticks(10)
+            // .ticks(10)
             .tickPadding(10)
-            .tickFormat(function (d) { return d + "%"; })
-        d3.select('body').append('svg').attr('width', 800).append('g').attr('transform', 'translate(10,0)', ).call(xAxis)
+        // .tickFormat(function (d) { return d })
+        d3.select('body').append('svg').attr('width', 800).append('g').call(xAxis)
     })()
 
     ; (function () {
