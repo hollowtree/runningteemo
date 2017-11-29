@@ -1,6 +1,54 @@
 import * as d3 from 'd3'
 
     ; (function () {
+        var width = 800,
+            height = 500
+        var svg = d3.select('body')
+            .append('svg')
+            .attr('width', width)
+            .attr('height', height)
+
+        var circle_data = d3.range(50).map(function () {
+            return {
+                x: Math.round(Math.random() * width),
+                y: Math.round(Math.random() * height),
+                r: Math.round(Math.random() * 20 + 5)
+            }
+        })
+
+        var circles = svg.append('g')
+            .attr('class', 'circles')
+            .selectAll('circle')
+            .data(circle_data)
+            .enter()
+            .append('circle')
+            .attr('cx', d => d.x)
+            .attr('cy', d => d.y)
+            .attr('r', d => {
+                console.log(d.r)
+                return d.r
+            })
+            .attr('fill', 'rgb(70, 130, 180)')
+
+        var zoom_handler = d3.zoom()
+            .on('zoom', zoom_actions)
+
+        function zoom_actions() {
+            circles.attr('transform', d3.event.transform)
+        }
+
+        zoom_handler(svg)
+
+        var drag_handler = d3.drag()
+            .on('drag', function (d) {
+                d3.select(this)
+                    .attr('cx', d.x = d3.event.x)
+                    .attr('cy', d.y = d3.event.y)
+            })
+
+        drag_handler(circles)
+    })()
+    ; (function () {
         var margin = { top: 20, right: 20, bottom: 30, left: 40 },
             width = 960 - margin.left - margin.right,
             height = 500 - margin.top - margin.bottom;
