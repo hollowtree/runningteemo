@@ -3,19 +3,19 @@ window.d3 = d3;
 
 var techan = require('./techan/techan.js')
 
-const square = d3.selectAll("rect");
-square.transition().delay(300).style("fill", "orange");
+// const square = d3.selectAll("rect");
+// square.transition().delay(300).style("fill", "orange");
 
 
-var margin = {top: 20, right: 20, bottom: 100, left: 50},
-margin2 = {top: 420, right: 20, bottom: 20, left: 50},
-width = 960 - margin.left - margin.right,
-height = 500 - margin.top - margin.bottom,
-height2 = 500 - margin2.top - margin2.bottom;
+var margin = { top: 20, right: 20, bottom: 100, left: 50 },
+    margin2 = { top: 420, right: 20, bottom: 20, left: 50 },
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom,
+    height2 = 500 - margin2.top - margin2.bottom;
 
 var parseDate = d3.timeParse("%d-%b-%y"),
-timeFormat = d3.timeFormat('%Y-%m-%d'),
-valueFormat = d3.format(',.2f');
+    timeFormat = d3.timeFormat('%Y-%m-%d'),
+    valueFormat = d3.format(',.2f');
 
 
 var x = techan.scale.financetime()
@@ -106,7 +106,7 @@ var focus = svg.append("g")
 
 focus.append("clipPath")
     .attr("id", "clip")
-.append("rect")
+    .append("rect")
     .attr("x", 0)
     .attr("y", y(1))
     .attr("width", width)
@@ -126,7 +126,7 @@ focus.append("g")
 
 focus.append("g")
     .attr("class", "y axis")
-.append("text")
+    .append("text")
     .attr("transform", "rotate(-90)")
     .attr("y", 6)
     .attr("dy", ".71em")
@@ -155,115 +155,115 @@ context.append("g")
     .attr("class", "y axis")
     .call(yAxis2);
 
-var result = d3.csv("/static/data.csv", function(error, data) {
-var accessor = candlestick.accessor(),
-    timestart = Date.now();
+var result = d3.csv("/static/data.csv", function (error, data) {
+    var accessor = candlestick.accessor(),
+        timestart = Date.now();
 
-data = data.slice(0, 3500).map(function(d) {
-    return {
-        date: parseDate(d.Date),
-        open: +d.Open,
-        high: +d.High,
-        low: +d.Low,
-        close: +d.Close,
-        volume: +d.Volume
-    };
-}).sort(function(a, b) { return d3.ascending(accessor.d(a), accessor.d(b)); });
+    data = data.slice(0, 3500).map(function (d) {
+        return {
+            date: parseDate(d.Date),
+            open: +d.Open,
+            high: +d.High,
+            low: +d.Low,
+            close: +d.Close,
+            volume: +d.Volume
+        };
+    }).sort(function (a, b) { return d3.ascending(accessor.d(a), accessor.d(b)); });
 
-x.domain(data.map(accessor.d));
-x2.domain(x.domain());
-y.domain(techan.scale.plot.ohlc(data, accessor).domain());
-y2.domain(y.domain());
-yVolume.domain(techan.scale.plot.volume(data).domain());
+    x.domain(data.map(accessor.d));
+    x2.domain(x.domain());
+    y.domain(techan.scale.plot.ohlc(data, accessor).domain());
+    y2.domain(y.domain());
+    yVolume.domain(techan.scale.plot.volume(data).domain());
 
-focus.select("g.candlestick").datum(data);
-focus.select("g.volume").datum(data);
+    focus.select("g.candlestick").datum(data);
+    focus.select("g.volume").datum(data);
 
-context.select("g.close").datum(data).call(close);
-context.select("g.x.axis").call(xAxis2);
+    context.select("g.close").datum(data).call(close);
+    context.select("g.x.axis").call(xAxis2);
 
-// Associate the brush with the scale and render the brush only AFTER a domain has been applied
-context.select("g.pane").call(brush).selectAll("rect").attr("height", height2);
+    // Associate the brush with the scale and render the brush only AFTER a domain has been applied
+    context.select("g.pane").call(brush).selectAll("rect").attr("height", height2);
 
-x.zoomable().domain(x2.zoomable().domain());
-draw();
+    x.zoomable().domain(x2.zoomable().domain());
+    draw();
 
-console.log("Render time: " + (Date.now()-timestart));
+    console.log("Render time: " + (Date.now() - timestart));
 
 
 
-// svg.append("g")
-//         .attr("class", "candlestick");
+    // svg.append("g")
+    //         .attr("class", "candlestick");
 
-svg.append("g")
+    svg.append("g")
         .attr("class", "trendlines");
 
-svg.append("g")
+    svg.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")");
 
-// svg.append("g")
-//         .attr("class", "y axis")
-//         .append("text")
-//         .attr("transform", "rotate(-90)")
-//         .attr("y", 6)
-//         .attr("dy", ".71em")
-//         .style("text-anchor", "end")
-//         .text("Price ($)");
+    // svg.append("g")
+    //         .attr("class", "y axis")
+    //         .append("text")
+    //         .attr("transform", "rotate(-90)")
+    //         .attr("y", 6)
+    //         .attr("dy", ".71em")
+    //         .style("text-anchor", "end")
+    //         .text("Price ($)");
 
-// Data to display initially
-drawTrendline(data.slice(0, data.length-20), trendlineData);
+    // Data to display initially
+    drawTrendline(data.slice(0, data.length - 20), trendlineData);
 });
 
 function brushed() {
-var zoomable = x.zoomable(),
-    zoomable2 = x2.zoomable();
+    var zoomable = x.zoomable(),
+        zoomable2 = x2.zoomable();
 
-zoomable.domain(zoomable2.domain());
-if(d3.event.selection !== null) zoomable.domain(d3.event.selection.map(zoomable.invert));
-draw();
+    zoomable.domain(zoomable2.domain());
+    if (d3.event.selection !== null) zoomable.domain(d3.event.selection.map(zoomable.invert));
+    draw();
 }
 
 function draw() {
-var candlestickSelection = focus.select("g.candlestick"),
-    data = candlestickSelection.datum();
-y.domain(techan.scale.plot.ohlc(data.slice.apply(data, x.zoomable().domain()), candlestick.accessor()).domain());
-candlestickSelection.call(candlestick);
-focus.select("g.volume").call(volume);
-// using refresh method is more efficient as it does not perform any data joins
-// Use this if underlying data is not changing
-svg.select("g.candlestick").call(candlestick.refresh);
-focus.select("g.x.axis").call(xAxis);
-focus.select("g.y.axis").call(yAxis);
+    var candlestickSelection = focus.select("g.candlestick"),
+        data = candlestickSelection.datum();
+    y.domain(techan.scale.plot.ohlc(data.slice.apply(data, x.zoomable().domain()), candlestick.accessor()).domain());
+    candlestickSelection.call(candlestick);
+    focus.select("g.volume").call(volume);
+    // using refresh method is more efficient as it does not perform any data joins
+    // Use this if underlying data is not changing
+    svg.select("g.candlestick").call(candlestick.refresh);
+    focus.select("g.x.axis").call(xAxis);
+    focus.select("g.y.axis").call(yAxis);
 }
 
 function drawTrendline(data, trendlineData) {
 
-x.domain(data.map(candlestick.accessor().d));
-y.domain(techan.scale.plot.ohlc(data, candlestick.accessor()).domain());
+    x.domain(data.map(candlestick.accessor().d));
+    y.domain(techan.scale.plot.ohlc(data, candlestick.accessor()).domain());
 
-// svg.selectAll("g.candlestick").datum(data).call(candlestick);
-// svg.selectAll("g.x.axis").call(xAxis);
-// svg.selectAll("g.y.axis").call(yAxis);
-svg.selectAll("g.trendlines").datum(trendlineData).call(trendline).call(trendline.drag);
+    // svg.selectAll("g.candlestick").datum(data).call(candlestick);
+    // svg.selectAll("g.x.axis").call(xAxis);
+    // svg.selectAll("g.y.axis").call(yAxis);
+    svg.selectAll("g.trendlines").datum(trendlineData).call(trendline).call(trendline.drag);
 }
 
 function enter(d) {
-valueText.style("display", "inline");
-refreshText(d);
+    valueText.style("display", "inline");
+    refreshText(d);
 }
 
 function out(d) {
-valueText.style("display", "none");
+    valueText.style("display", "none");
 }
 
 function drag(d) {
-refreshText(d);
+    refreshText(d);
 }
 
 function refreshText(d) {
-valueText.text(
-    "Start: [" + timeFormat(d.start.date) + ", " + valueFormat(d.start.value) +
-    "] End: [" + timeFormat(d.end.date) + ", " + valueFormat(d.end.value) + "]"
-);
+    valueText.text(
+        "Start: [" + timeFormat(d.start.date) + ", " + valueFormat(d.start.value) +
+        "] End: [" + timeFormat(d.end.date) + ", " + valueFormat(d.end.value) + "]"
+    );
 }
