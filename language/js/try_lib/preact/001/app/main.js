@@ -22,4 +22,10 @@ class Demo extends Component {
     }
 }
 
-render(<Demo />, document.body);
+
+render((
+	<div id="foo">
+		<span>Hello, world!</span>
+		<button onClick={ e => alert("hi!") }>Click Me</button>
+	</div>
+), document.body);
