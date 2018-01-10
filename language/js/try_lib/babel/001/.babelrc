@@ -1,0 +1,15 @@
+{
+    "presets": [
+        [
+            "env",
+            {
+                "targets": {
+                    "browsers": [
+                        "last 18 versions",
+                        "safari >= 1"
+                    ]
+                }
+            }
+        ]
+    ]
+}
