@@ -9,7 +9,7 @@ int main()
     cin >> a;
     cout << "b = ";
     cin >> b;
-    cout << "(++a) - b = " << ++a - b << "\n";
-    cout << "(a++) - b = " << a++ - b;
+    cout << "(++a) - b = " << ++a - b << endl;
+    cout << "(a++) - b = " << a++ - b << endl;
     return 0;
 }
