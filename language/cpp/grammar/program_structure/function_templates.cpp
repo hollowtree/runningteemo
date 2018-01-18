@@ -1,8 +1,9 @@
 #include <iostream>
+#include <typeinfo>
 using namespace std;
 
-template <class T>
-T sum(T a, T b)
+template <class S, class T>
+T sum(S a, T b)
 {
     T result;
     result = a + b;
@@ -18,9 +19,10 @@ int main()
     // --- 简写：
     // 编译器能够自动推断出数据类型T
     // 但是如果sum使用不同类型的参数调用，则编译器可能会无法自动推断出类型T
-    k = sum(j, j);
+    k = sum(j, f);
     h = sum(f, g);
     cout << k << endl;
     cout << h << endl;
+    cout << typeid(k).name() << endl;
     return 0;
 }
