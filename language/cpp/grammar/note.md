@@ -17,3 +17,10 @@ string concatenate (const string& a, const string& b)
   return a+b;
 }
 ```
+
+
+## compound data types
+```
+char foo[20];
+```
+
