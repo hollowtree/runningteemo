@@ -1,6 +1,8 @@
 const path = require('path')
 // --- 清理文件夹
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+// --- 分离 css
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 // --- 生成 Html
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -19,13 +21,17 @@ const config = {
         rules: [
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader']
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: "css-loader"
+                })
             }
         ]
     },
     plugins: [
         new CleanWebpackPlugin(['cdn']),
         new ManifestPlugin(),
+        new ExtractTextPlugin('[name].css'),
         new HtmlWebpackPlugin({
             filename: 'app.html',
             title: 'page app',
@@ -35,7 +41,7 @@ const config = {
             filename: 'home.html',
             title: 'page home',
             chunks: ['home']
-        })
+        }),
     ],
     output: {
         filename: '[name].[chunkhash].js',
