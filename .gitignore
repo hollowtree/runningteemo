@@ -8,4 +8,5 @@ data-*.json
 *.exe
 *.pak
 *.zip
+*.out
 temp/
