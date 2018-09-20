@@ -9,3 +9,7 @@ data-*.json
 *.zip
 *.out
 temp/
+
+**/scala/**/project/
+**/scala/**/target/
+**/scala/**/build.sbt
