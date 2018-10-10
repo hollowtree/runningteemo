@@ -1,3 +1,16 @@
-import { h, app } from './hyperapp'
+// import { h, app } from "hyperapp"
+import { h, app } from "./hyperapp"
 
-app(null, null, (<div>Hello World</div>), document.querySelector('#app'))
+const state = {
+    count: 0
+}
+
+const actions = {
+    up: () => state => ({ count: state.count + 1 })
+}
+
+const view = (state, actions) => (
+    <button onclick={actions.up}>{state.count}</button>
+)
+
+window.main = app(state, actions, view, document.querySelector('#app'))
