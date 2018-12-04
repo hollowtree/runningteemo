@@ -28,6 +28,8 @@
       };
     }
     function app(state, actions, view, container) {
+      debugger;
+      console.log(state, actions, view, container);
       var map = [].map;
       var rootElement = container && container.children[0] || null;
       var oldNode = rootElement && recycleElement(rootElement);
@@ -254,6 +256,8 @@
       }
 
       function patch(parent, element, oldNode, node, isSvg) {
+        console.log(parent, element, oldNode, node, isSvg);
+
         if (node === oldNode) ; else if (oldNode == null || oldNode.nodeName !== node.nodeName) {
           var newElement = createElement(node, isSvg);
           parent.insertBefore(newElement, element);
@@ -346,6 +350,20 @@
       }
     }
 
-    app(null, null, h("div", null, "Hello World"), document.querySelector('#app'));
+    // import { h, app } from "hyperapp"
+    const state = {
+      count: 0
+    };
+    const actions = {
+      up: () => state => ({
+        count: state.count + 1
+      })
+    };
+
+    const view = (state, actions) => h("button", {
+      onclick: actions.up
+    }, state.count);
+
+    window.main = app(state, actions, view, document.querySelector('#app'));
 
 }());
