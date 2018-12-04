@@ -3,11 +3,11 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-import RootView from './components/Root.vue'
-import HomeView from './components/Home.vue'
-import ItemView from './components/Item.vue'
-// const HomeView = () => import('./components/Home.vue')
-// const ItemView = () => import('./components/Item.vue')
+import RootView from '../components/Root.vue'
+import HomeView from '../components/Home.vue'
+import ItemView from '../components/Item.vue'
+// const HomeView = () => import('../components/Home.vue')
+// const ItemView = () => import('../components/Item.vue')
 
 export function createRouter() {
     return new Router({
