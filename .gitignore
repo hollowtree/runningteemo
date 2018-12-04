@@ -9,6 +9,7 @@ data-*.json
 *.zip
 *.out
 temp/
+dist/
 
 **/scala/**/project/
 **/scala/**/target/
