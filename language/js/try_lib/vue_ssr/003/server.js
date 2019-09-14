@@ -22,17 +22,13 @@ let renderer
 let readyPromise
 const templatePath = resolve('./src/template/index.html')
 
-if (isProd) {
-
-} else {
-    readyPromise = require('./config/setup-dev-server')(
-        app,
-        templatePath,
-        (bundle, options) => {
-            renderer = createRenderer(bundle, options)
-        }
-    )
-}
+readyPromise = require('./config/setup-dev-server')(
+    app,
+    templatePath,
+    (bundle, options) => {
+        renderer = createRenderer(bundle, options)
+    }
+)
 
 const port = process.env.PORT || 8080
 
@@ -49,6 +45,7 @@ function render(req, res) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     `
     }
+    console.log(1234)
     renderer.renderToString(context)
         .then(html => {
             res.end(html)
